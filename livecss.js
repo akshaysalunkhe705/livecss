@@ -1,5 +1,12 @@
 //append here everything
 $(document).ready(function(){
+	$("#in").click(function(){
+		$("#livecss").show('slide', {direction: 'right'}, 500);
+	});
+	$("#out").click(function(){
+		$("#livecss").hide('slide', {direction: 'right'}, 500);
+	});
+
 	$("#livecss").append('<label> Tag class </label> <br> <input type="text" class="inputs" id="className" value="test"> <br><br>');
 	$("#livecss").append('<label> Border Size</label> <br> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="50"> <br><br>');
 	$("#livecss").append('<label> Border Color </label> <br> <select id="borderType" onchange="js:border()" class="inputs"> <option value="solid">Solid</option> <option value="dotted">dotted</option> </select> <br><br>');
