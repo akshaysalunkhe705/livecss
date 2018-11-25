@@ -44,7 +44,6 @@ function border()
 	let Values = initValues();
 	$("."+className).css({"border": Values.border.size+"px "+ Values.border.type+" #"+Values.border.color});
 }
-
 function backgroundColor()
 {
 	let className = getClassName();
@@ -57,25 +56,9 @@ function backgroundColor()
 
 function colorPicker()
 {
-	/**
- * jscolor - JavaScript Color Picker
- *
- * @link    http://jscolor.com
- * @license For open source use: GPLv3
- *          For commercial use: JSColor Commercial License
- * @author  Jan Odvarko
- * @version 2.0.5
- *
- * See usage examples at http://jscolor.com/examples/
- */
-
 
 "use strict";
-
-
 if (!window.jscolor) { window.jscolor = (function () {
-
-
 var jsc = {
 
 
