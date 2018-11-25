@@ -2,18 +2,22 @@
 $(document).ready(function(){
 	$("#in").click(function(){
 		$("#livecss").show('slide', {direction: 'right'}, 500);
+		$("#in").hide();
+		$("#out").show();
 	});
 	$("#out").click(function(){
 		$("#livecss").hide('slide', {direction: 'right'}, 500);
+		$("#in").show();
+		$("#out").hide();
 	});
 
 	$("#livecss").append('<label> Tag class </label> <input type="text" class="inputs" id="className" value="test"> <br><hr>');
 
 	$("#livecss").append('<label> Background Color </label> <input id="backgroundColor" onchange="js:backgroundColor()" class="jscolor inputs" value="ab2567"><br><hr>');
 
-	$("#livecss").append('<label> Border Size</label> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="50"> <br><br>');
+	$("#livecss").append('<label> Border Size</label> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="20" value="2"> <br><br>');
 	$("#livecss").append('<label> Border Color </label> <select id="borderType" onchange="js:border()" class="inputs"> <option value="solid">Solid</option> <option value="dotted">dotted</option> </select> <br><br>');
-	$("#livecss").append('<label> Border Color </label> <input id="borderColor" onchange="js:border()" class="jscolor inputs" value="ab2567"> <br><hr>');
+	$("#livecss").append('<label> Border Color </label> <input id="borderColor" onchange="js:border()" class="jscolor inputs" value="000000"> <br><hr>');
 
 	$("#livecss").append('<label> First Border </label> <input type="text" id="first-border" onchange="js:borderRadius()" class="inputs"><br><br>');
 	$("#livecss").append('<label> Second Border </label> <input type="text" id="second-border" onchange="js:borderRadius()" class="inputs"><br><br>');
