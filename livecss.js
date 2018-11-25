@@ -7,12 +7,27 @@ $(document).ready(function(){
 		$("#livecss").hide('slide', {direction: 'right'}, 500);
 	});
 
-	$("#livecss").append('<label> Tag class </label> <br> <input type="text" class="inputs" id="className" value="test"> <br><br>');
-	$("#livecss").append('<label> Border Size</label> <br> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="50"> <br><br>');
-	$("#livecss").append('<label> Border Color </label> <br> <select id="borderType" onchange="js:border()" class="inputs"> <option value="solid">Solid</option> <option value="dotted">dotted</option> </select> <br><br>');
-	$("#livecss").append('<label> Border Color </label> <input id="borderColor" onchange="js:border()" class="jscolor inputs" value="ab2567"> <br><br>');
+	$("#livecss").append('<label> Tag class </label> <input type="text" class="inputs" id="className" value="test"> <br><hr>');
 
-	$("#livecss").append('<label> Background Color </label> <input id="backgroundColor" onchange="js:backgroundColor()" class="jscolor inputs" value="ab2567">');
+	$("#livecss").append('<label> Background Color </label> <input id="backgroundColor" onchange="js:backgroundColor()" class="jscolor inputs" value="ab2567"><br><hr>');
+
+	$("#livecss").append('<label> Border Size</label> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="50"> <br><br>');
+	$("#livecss").append('<label> Border Color </label> <select id="borderType" onchange="js:border()" class="inputs"> <option value="solid">Solid</option> <option value="dotted">dotted</option> </select> <br><br>');
+	$("#livecss").append('<label> Border Color </label> <input id="borderColor" onchange="js:border()" class="jscolor inputs" value="ab2567"> <br><hr>');
+
+	$("#livecss").append('<label> First Border </label> <input type="text" id="first-border" onchange="js:borderRadius()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Second Border </label> <input type="text" id="second-border" onchange="js:borderRadius()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Third Border </label> <input type="text" id="third-border" onchange="js:borderRadius()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Fourth Border </label> <input type="text" id="fourth-border" onchange="js:borderRadius()" class="inputs"><br><hr>');
+
+	$("#livecss").append('<label> Height </label> <input type="text" id="height" onchange="js:heightwidth()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Width </label> <input type="text" id="width" onchange="js:heightwidth()" class="inputs"><br><hr>');
+
+	$("#livecss").append('<label> Position </label> <input type="text" id="type" onchange="js:positions()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Top </label> <input type="text" id="top" onchange="js:positions()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Bottom </label> <input type="text" id="bottom" onchange="js:positions()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Left </label> <input type="text" id="left" onchange="js:positions()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Right </label> <input type="text" id="right" onchange="js:positions()" class="inputs"><br><hr>');
 	colorPicker();
 });
 function setTextColor(picker) {
@@ -33,12 +48,25 @@ function initValues()
 			"type" : $("#borderType").val(),
 			"color" : $("#borderColor").val(),
 		},
+		"borderradius" : {
+			"first" : $("#first-border").val(), 
+			"second" : $("#second-border").val(), 
+			"third" : $("#third-border").val(), 
+			"fourth" : $("#fourth-border").val(), 
+		},
 		"background" : {
 			"color" : $("#backgroundColor").val(),
 		},
-		"dimension" : {
-			"height" : $("#backgroundColor").val(), 
-			"width" : $("#backgroundColor").val()
+		"heightwidth" : {
+			"height" : $("#height").val(), 
+			"width" : $("#width").val()
+		},
+		"position" : {
+			"type" : $("#type").val(), 
+			"top" : $("#top").val(), 
+			"buttom" : $("#bottom").val(), 
+			"left" : $("#left").val(), 
+			"right" : $("#right").val(), 
 		}
 	}
 
@@ -51,12 +79,32 @@ function border()
 	let Values = initValues();
 	$("."+className).css({"border": Values.border.size+"px "+ Values.border.type+" #"+Values.border.color});
 }
+function borderRadius()
+{
+	let className = getClassName();
+	let Values = initValues();
+	$("."+className).css({"border-radius": Values.borderradius.first+" "+Values.borderradius.second+" "+Values.borderradius.third+" "+Values.borderradius.fourth});
+}
 function backgroundColor()
 {
 	let className = getClassName();
 	let Values = initValues();
 	$("."+className).css({"background-color": "#"+Values.background.color});
 }
+function heightwidth()
+{
+	let className = getClassName();
+	let Values = initValues();
+	$("."+className).css({"height": Values.heightwidth.height, "width": Values.heightwidth.width});	
+}
+function positions()
+{
+	let className = getClassName();
+	let Values = initValues();
+	$("."+className).css({"position": Values.position.type,	"top": Values.position.top,	"bottom": Values.position.bottom, "left": Values.position.left, "right": Values.position.right});	
+}
+
+
 
 
 
@@ -64,11 +112,9 @@ function backgroundColor()
 
 function colorPicker()
 {
-
-"use strict";
-if (!window.jscolor) { window.jscolor = (function () {
-var jsc = {
-
+	"use strict";
+	if (!window.jscolor) { window.jscolor = (function () {
+	var jsc = {
 
 	register : function () {
 		jsc.attachDOMReadyEvent(jsc.init);
@@ -1814,30 +1860,6 @@ var jsc = {
 				this.targetElement.onclick = function () { return false; };
 			}
 		}
-
-		/*
-		var elm = this.targetElement;
-		do {
-			// If the target element or one of its offsetParents has fixed position,
-			// then use fixed positioning instead
-			//
-			// Note: In Firefox, getComputedStyle returns null in a hidden iframe,
-			// that's why we need to check if the returned style object is non-empty
-			var currStyle = jsc.getStyle(elm);
-			if (currStyle && currStyle.position.toLowerCase() === 'fixed') {
-				this.fixed = true;
-			}
-
-			if (elm !== this.targetElement) {
-				// attach onParentScroll so that we can recompute the picker position
-				// when one of the offsetParents is scrolled
-				if (!elm._jscEventsAttached) {
-					jsc.attachEvent(elm, 'scroll', jsc.onParentScroll);
-					elm._jscEventsAttached = true;
-				}
-			}
-		} while ((elm = elm.offsetParent) && !jsc.isElementType(elm, 'body'));
-		*/
 
 		// valueElement
 		if (this.valueElement) {
