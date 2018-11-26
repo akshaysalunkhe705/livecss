@@ -15,15 +15,6 @@ $(document).ready(function(){
 
 	$("#livecss").append('<label> Background Color </label> <input id="backgroundColor" onchange="js:backgroundColor()" class="jscolor inputs" value="ab2567"><br><hr>');
 
-	$("#livecss").append('<label> Border Size</label> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="20" value="2"> <br><br>');
-	$("#livecss").append('<label> Border Color </label> <select id="borderType" onchange="js:border()" class="inputs"> <option value="solid">Solid</option> <option value="dotted">dotted</option> </select> <br><br>');
-	$("#livecss").append('<label> Border Color </label> <input id="borderColor" onchange="js:border()" class="jscolor inputs" value="000000"> <br><hr>');
-
-	$("#livecss").append('<label> First Border </label> <input type="text" id="first-border" onchange="js:borderRadius()" class="inputs"><br><br>');
-	$("#livecss").append('<label> Second Border </label> <input type="text" id="second-border" onchange="js:borderRadius()" class="inputs"><br><br>');
-	$("#livecss").append('<label> Third Border </label> <input type="text" id="third-border" onchange="js:borderRadius()" class="inputs"><br><br>');
-	$("#livecss").append('<label> Fourth Border </label> <input type="text" id="fourth-border" onchange="js:borderRadius()" class="inputs"><br><hr>');
-
 	$("#livecss").append('<label> Height </label> <input type="text" id="height" onchange="js:heightwidth()" class="inputs"><br><br>');
 	$("#livecss").append('<label> Width </label> <input type="text" id="width" onchange="js:heightwidth()" class="inputs"><br><hr>');
 
@@ -32,6 +23,15 @@ $(document).ready(function(){
 	$("#livecss").append('<label> Bottom </label> <input type="text" id="bottom" onchange="js:positions()" class="inputs"><br><br>');
 	$("#livecss").append('<label> Left </label> <input type="text" id="left" onchange="js:positions()" class="inputs"><br><br>');
 	$("#livecss").append('<label> Right </label> <input type="text" id="right" onchange="js:positions()" class="inputs"><br><hr>');
+	
+	$("#livecss").append('<label> Border Size</label> <input id="borderSize" onchange="js:border()" type="range" class="inputs" min="0" max="20" value="2"> <br><br>');
+	$("#livecss").append('<label> Border Color </label> <select id="borderType" onchange="js:border()" class="inputs"> <option value="solid">Solid</option> <option value="dotted">dotted</option> </select> <br><br>');
+	$("#livecss").append('<label> Border Color </label> <input id="borderColor" onchange="js:border()" class="jscolor inputs" value="000000"> <br><hr>');
+
+	$("#livecss").append('<label> First Border </label> <input type="text" id="first-border" onchange="js:borderRadius()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Second Border </label> <input type="text" id="second-border" onchange="js:borderRadius()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Third Border </label> <input type="text" id="third-border" onchange="js:borderRadius()" class="inputs"><br><br>');
+	$("#livecss").append('<label> Fourth Border </label> <input type="text" id="fourth-border" onchange="js:borderRadius()" class="inputs"><br><hr>');
 	colorPicker();
 });
 function setTextColor(picker) {
